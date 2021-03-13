@@ -5,10 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore, } from 'redux';
 import allReducers from './reducers';
+import { Provider } from 'react-redux';
 
 
-
-const store = createStore(allReducers);
+const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 //Store -> GLOBALIZED STATE
 
@@ -20,10 +20,10 @@ const store = createStore(allReducers);
 //Dispatch
 // store.dispatch (increment());
 ReactDOM.render(
-  <React.StrictMode>
+ <Provider store={store}> 
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+</Provider>
+  ,document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
